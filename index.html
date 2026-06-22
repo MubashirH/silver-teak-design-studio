@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Teak Design Studio | Luxury Spatial Architecture</title>
+  <meta name="description" content="Award-winning quiet luxury architectural portfolio showcasing clean geometries, raw elemental design, and bespoke structural narratives.">
+  
+  <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans-Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Custom Cinematic Cursor Elements -->
+  <div class="custom-cursor" id="js-cursor"></div>
+  <div class="custom-cursor-ring" id="js-cursor-ring"></div>
+
+  <!-- FULL-SCREEN LOTTIE PRELOADER OVERLAY -->
+  <div id="js-preloader" class="preloader" aria-hidden="false">
+    <div id="js-lottie-container" class="lottie-container"></div>
+  </div>
+
+  <!-- Global Header Navigation -->
+  <header class="header">
+    <a href="#" class="logo hover-target" aria-label="Silver Teak Design Studio Home">
+      <svg class="header-logo" viewBox="0 0 100 40" width="120" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="28" font-family="'Playfair Display', serif" font-size="24" fill="#f5f5f5" letter-spacing="2">S</text>
+        <text x="22" y="28" font-family="'Inter', sans-serif" font-size="10" fill="#c5a880" letter-spacing="4">T</text>
+        <line x1="16" y1="10" x2="16" y2="30" stroke="#c5a880" stroke-width="1"/>
+      </svg>
+    </a>
+    <nav aria-label="Primary Navigation">
+      <a href="#projects" class="nav-link hover-target">Projects</a>
+      <a href="#services" class="nav-link hover-target">Services</a>
+      <a href="#about" class="nav-link hover-target">Studio</a>
+      <a href="#instagram" class="nav-link hover-target">Journal</a>
+      <a href="#contact" class="nav-link hover-target">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Skip Projects Fixed Control Element -->
+  <button id="js-skip-projects" class="skip-projects-btn hover-target" aria-label="Skip featured projects section">
+    <span class="skip-arrow">&darr;</span>
+  </button>
+
+  <!-- Main Smooth Scrolling Wrapper (Hidden initially for preloader synchronization) -->
+  <main id="smooth-wrapper" class="is-loading">
+    <div id="smooth-content">
+
+      <!-- SECTION 1: Cinematic Parallax Hero -->
+      <section class="hero" aria-label="Hero Section">
+        <div class="hero-bg-container">
+          <img 
+            src="https://picsum.photos/1920/1080" 
+            class="hero-bg-img" 
+            alt="Minimalist concrete villa facade in forest atmosphere"
+          >
+        </div>
+        <div class="hero-content">
+          <h1 id="js-hero-title">Silver Teak Design Studio</h1>
+          <p class="hero-subtitle">Architectural Artifacts &bull; Studio</p>
+        </div>
+        <div class="hero-scroll-indicator">
+          <span class="indicator-line"></span>
+          <span class="indicator-text">Scroll to Experience</span>
+        </div>
+      </section>
+
+      <!-- SECTION 2: HBA-Style Pinned Projects Section -->
+      <section id="projects" class="hba-projects-container" aria-label="Featured Works">
+        
+        <!-- PROJECT 1 -->
+        <div class="hba-project" id="project-01">
+          <div class="project-backdrop">
+            <img src="https://picsum.photos/1920/1080" alt="House of Light Backdrop" class="project-backdrop-img">
+          </div>
+
+          <div class="project-media-wrapper">
+            <div class="project-slide active" style="z-index: 1;">
+              <img src="https://picsum.photos/1920/1080" alt="House of Light Exterior">
+            </div>
+            <div class="project-slide next-slide" style="z-index: 2;">
+              <img src="https://picsum.photos/1920/1080" alt="House of Light Living space">
+            </div>
+            <div class="project-slide next-slide" style="z-index: 3;">
+              <img src="https://picsum.photos/1920/1080" alt="House of Light Detail close up">
+            </div>
+          </div>
+          
+          <div class="project-meta-bottom">
+            <div class="meta-content-wrap">
+              <div class="meta-left">
+                <span class="project-num">01 / 03</span>
+                <h2 class="project-title font-serif">House of Light</h2>
+              </div>
+              <div class="meta-right">
+                <div class="project-keywords font-sans">Minimalist | Interior | 2026</div>
+                <div class="project-action-wrap">
+                  <button class="view-project-btn hover-target" data-project-idx="0" aria-label="View House of Light Details">
+                    <span class="view-project-text">View Project</span>
+                    <span class="view-project-arrow">&rarr;</span>
+                  </button>
+                </div>
+                <div class="project-slide-progress">
+                  <div class="progress-bar-fill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="hba-project" id="project-02">
+          <div class="project-backdrop">
+            <img src="https://picsum.photos/1920/1080" alt="Ocean Pavilion Backdrop" class="project-backdrop-img">
+          </div>
+
+          <div class="project-media-wrapper">
+            <div class="project-slide active" style="z-index: 1;">
+              <img src="https://picsum.photos/1920/1080" alt="Ocean Pavilion Cliffs view">
+            </div>
+            <div class="project-slide next-slide" style="z-index: 2;">
+              <img src="https://picsum.photos/1920/1080" alt="Ocean Pavilion Balcony infinity pool">
+            </div>
+            <div class="project-slide next-slide" style="z-index: 3;">
+              <img src="https://picsum.photos/1920/1080" alt="Ocean Pavilion Minimalist Lounge">
+            </div>
+          </div>
+          
+          <div class="project-meta-bottom">
+            <div class="meta-content-wrap">
+              <div class="meta-left">
+                <span class="project-num">02 / 03</span>
+                <h2 class="project-title font-serif">Ocean Pavilion</h2>
+              </div>
+              <div class="meta-right">
+                <div class="project-keywords font-sans">Coastal | Structural | 2024</div>
+                <div class="project-action-wrap">
+                  <button class="view-project-btn hover-target" data-project-idx="1" aria-label="View Ocean Pavilion Details">
+                    <span class="view-project-text">View Project</span>
+                    <span class="view-project-arrow">&rarr;</span>
+                  </button>
+                </div>
+                <div class="project-slide-progress">
+                  <div class="progress-bar-fill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 3 -->
+        <div class="hba-project" id="project-03">
+          <div class="project-backdrop">
+            <img src="https://picsum.photos/1920/1080" alt="Monolith Sanctuary Backdrop" class="project-backdrop-img">
+          </div>
+
+          <div class="project-media-wrapper">
+            <div class="project-slide active" style="z-index: 1;">
+              <img src="https://picsum.photos/1920/1080" alt="The Monolith Sanctuary facade">
+            </div>
+            <div class="project-slide next-slide" style="z-index: 2;">
+              <img src="https://picsum.photos/1920/1080" alt="The Monolith Sanctuary Spa Area">
+            </div>
+            <div class="project-slide next-slide" style="z-index: 3;">
+              <img src="https://picsum.photos/1920/1080" alt="The Monolith Sanctuary Bedroom view">
+            </div>
+          </div>
+          
+          <div class="project-meta-bottom">
+            <div class="meta-content-wrap">
+              <div class="meta-left">
+                <span class="project-num">03 / 03</span>
+                <h2 class="project-title font-serif">Monolith Sanctuary</h2>
+                <p class="project-desc">St. Moritz, Swiss Alps — 2023. A spatial refuge carved inside metamorphic rock, engineered to shield against natural elements.</p>
+              </div>
+              <div class="meta-right">
+                <div class="project-keywords font-sans">Mountain | Geothermal | 2025</div>
+                <div class="project-action-wrap">
+                  <button class="view-project-btn hover-target" data-project-idx="2" aria-label="View Monolith Sanctuary Details">
+                    <span class="view-project-text">View Project</span>
+                    <span class="view-project-arrow">&rarr;</span>
+                  </button>
+                </div>
+                <div class="project-slide-progress">
+                  <div class="progress-bar-fill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SECTION 3: Minimalist Services Section with Enhanced Luxury Media Columns -->
+      <section id="services" class="services-section" aria-label="Services Section">
+        <div class="services-container">
+          <div class="services-header">
+            <span class="services-tag reveal-text">Our Philosophy</span>
+            <h2 class="services-main-title font-serif reveal-text">Translating Quiet Luxury into Built Form</h2>
+          </div>
+          <div class="services-grid">
+            
+            <!-- Service Item 1 -->
+            <div class="service-item reveal-item">
+              <div class="service-media-frame">
+                <img src="https://picsum.photos/1920/1080" alt="Architectural Masterplanning Visual representation" class="service-img">
+              </div>
+              <div class="service-content">
+                <span class="service-num">01</span>
+                <h3 class="font-serif">Architectural Masterplanning</h3>
+                <p>Defining architectural narratives that resonate with local topography and solar configurations, engineering custom facades that respect regional elements.</p>
+              </div>
+            </div>
+
+            <!-- Service Item 2 -->
+            <div class="service-item reveal-item">
+              <div class="service-media-frame">
+                <img src="https://picsum.photos/1920/1080" alt="Interior Architecture Visual representation" class="service-img">
+              </div>
+              <div class="service-content">
+                <span class="service-num">02</span>
+                <h3 class="font-serif">Interior Architecture</h3>
+                <p>Designing pure interior environments utilizing continuous stone surfaces, bespoke structural joinery, and meticulously hidden physical systems.</p>
+              </div>
+            </div>
+
+            <!-- Service Item 3 -->
+            <div class="service-item reveal-item">
+              <div class="service-media-frame">
+                <img src="https://picsum.photos/1920/1080" alt="Elemental Curations Visual representation" class="service-img">
+              </div>
+              <div class="service-content">
+                <span class="service-num">03</span>
+                <h3 class="font-serif">Elemental Curations</h3>
+                <p>Formulating curated materiality schemes with rare raw stones, solid brass accents, sand-blasted timber structures, and curated modern art pieces.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: Editorial Parallax Grid (About Studio) -->
+      <section id="about" class="editorial-grid" aria-label="Editorial Stories">
+        
+        <!-- Story Card 1 -->
+        <div class="reveal-card">
+          <div class="reveal-image-wrap js-reveal-container">
+            <img 
+              src="https://picsum.photos/1920/1080" 
+              class="js-reveal-image" 
+              alt="Raw elemental materials stone and wood design detail"
+            >
+          </div>
+          <div class="editorial-caption">
+            <h3 class="font-serif">Architectural Authenticity</h3>
+            <p class="font-sans">
+              We employ raw natural materials that showcase the gentle patina of time, establishing harmony between nature and geometric construct.
+            </p>
+          </div>
+        </div>
+
+        <!-- Story Card 2 Offset -->
+        <div class="reveal-card offset">
+          <div class="reveal-image-wrap js-reveal-container">
+            <img 
+              src="https://picsum.photos/1920/1080" 
+              class="js-reveal-image" 
+              alt="Close-up architectural curve structural details"
+            >
+          </div>
+          <div class="editorial-caption">
+            <h3 class="font-serif">Subtractive Architectonics</h3>
+            <p class="font-sans">
+              Stripping away non-essential components to maximize natural light pathways and preserve the emotional integrity of spatial voids.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SECTION 5: Infinite Instagram Feed Slider (Quiet Luxury Cinematic Marquee) -->
+      <section id="instagram" class="instagram-section" aria-label="Instagram Feed Slideshow">
+        <div class="instagram-header">
+          <span class="instagram-tag reveal-text">Digital Journal</span>
+          <h2 class="instagram-title font-serif reveal-text">Visual Perspectives</h2>
+        </div>
+        <div class="instagram-slider-container">
+          <div class="instagram-track hover-target" id="js-instagram-track">
+            
+            <!-- Original Set of 4 Slides -->
+            <div class="instagram-slide">
+              <img src="https://picsum.photos/1920/1080" alt="Minimalist geometric facade detailing">
+              <div class="instagram-overlay">
+                <span class="instagram-handle">@silverteak.design</span>
+              </div>
+            </div>
+            <div class="instagram-slide">
+              <img src="https://picsum.photos/1920/1080" alt="Organic timber joinery alignment">
+              <div class="instagram-overlay">
+                <span class="instagram-handle">@silverteak.design</span>
+              </div>
+            </div>
+            <div class="instagram-slide">
+              <img src="https://picsum.photos/1920/1080" alt="Interplay of direct sunlight and raw stone">
+              <div class="instagram-overlay">
+                <span class="instagram-handle">@silverteak.design</span>
+              </div>
+            </div>
+            <div class="instagram-slide">
+              <img src="https://picsum.photos/1920/1080" alt="Architectural scale model mockup detail">
+              <div class="instagram-overlay">
+                <span class="instagram-handle">@silverteak.design</span>
+              </div>
+            </div>
+
+            <!-- Duplicate Set for Seamless Infinite Scrolling Bounds -->
+            <div class="instagram-slide" aria-hidden="true">
+              <img src="https://picsum.photos/1920/1080" alt="Minimalist geometric facade detailing copy">
+              <div class="instagram-overlay">
+                <span class="instagram-handle">@silverteak.design</span>
+              </div>
+            </div>
+            <div class="instagram-slide" aria-hidden="true">
+              <img src="https://picsum.photos/1920/1080" alt="Organic timber joinery alignment copy">
+              <div class="instagram-overlay">
+                <span class="instagram-handle">@silverteak.design</span>
+              </div>
+            </div>
+            <div class="instagram-slide" aria-hidden="true">
+              <img src="https://picsum.photos/1920/1080" alt="Interplay of direct sunlight and raw stone copy">
+              <div class="instagram-overlay">
+                <span class="instagram-handle">@silverteak.design</span>
+              </div>
+            </div>
+            <div class="instagram-slide" aria-hidden="true">
+              <img src="https://picsum.photos/1920/1080" alt="Architectural scale model mockup detail copy">
+              <div class="instagram-overlay">
+                <span class="instagram-handle">@silverteak.design</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: Elegant Typography-Driven Footer/Contact Section -->
+      <footer id="contact" class="footer" aria-label="Contact Section">
+        <div class="footer-grid">
+          
+          <div class="footer-left">
+            <span class="footer-pretitle">Enquiries</span>
+            <h2 class="footer-title font-serif">Commission a Spatial Artifact</h2>
+            <div class="footer-info">
+              <div class="info-block">
+                <span>Studio Office</span>
+                <p>Aoyama, Tokyo / Mayfair, London</p>
+              </div>
+              <div class="info-block">
+                <span>Email</span>
+                <p class="hover-target">collaborations@silverteak.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-right">
+            <form id="contact-form" class="contact-form" onsubmit="event.preventDefault(); alert('Inquiry received. A bespoke representative will connect shortly.');">
+              <div class="form-group hover-target">
+                <label for="client-name">Your Name</label>
+                <input type="text" id="client-name" name="name" required placeholder="Alexander Mercer">
+              </div>
+              <div class="form-group hover-target">
+                <label for="client-email">Email Address</label>
+                <input type="email" id="client-email" name="email" required placeholder="alexander@mercer.co">
+              </div>
+              <div class="form-group hover-target">
+                <label for="client-message">Brief Spatial Intent</label>
+                <textarea id="client-message" name="message" rows="4" required placeholder="Desiring a minimal concrete dwelling overlooking..."></textarea>
+              </div>
+              <button type="submit" class="submit-btn hover-target">
+                <span class="btn-text">Submit Inquiry</span>
+                <span class="btn-arrow">&rarr;</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <p class="copyright">&copy; 2024 SILVER TEAK DESIGN STUDIO. All Rights Reserved. Quiet Luxury Realization.</p>
+          <div class="footer-socials">
+            <a href="https://instagram.com" class="social-link hover-target" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <span class="social-divider">/</span>
+            <a href="https://wa.me/1234567890" class="social-link hover-target" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          </div>
+          <p class="credits">Crafted in collaboration with spatial developers.</p>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       DYNAMIC PROJECT DETAILS MODAL
+       ========================================================================== -->
+  <div id="js-project-modal" class="project-modal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop-blur"></div>
+    
+    <div class="modal-wrapper">
+      <button class="modal-close-btn hover-target" id="js-modal-close" aria-label="Close modal dialog">
+        <span class="close-txt">Close</span>
+        <span class="close-icon">&times;</span>
+      </button>
+
+      <div class="modal-slideshow-pane">
+        <div class="modal-slides-wrap" id="js-modal-slides-container">
+          <!-- Dynamic Slides injected via JavaScript -->
+        </div>
+        
+        <div class="modal-slide-nav">
+          <button class="modal-nav-btn prev hover-target" id="js-modal-prev" aria-label="Previous Slide">&larr;</button>
+          <button class="modal-nav-btn next hover-target" id="js-modal-next" aria-label="Next Slide">&rarr;</button>
+        </div>
+      </div>
+
+      <div class="modal-content-pane">
+        <div class="modal-text-content">
+          <span class="modal-num" id="js-modal-num">01 / 03</span>
+          <h2 class="modal-title font-serif" id="js-modal-title">Project Title</h2>
+          <div class="modal-divider"></div>
+          <p class="modal-desc" id="js-modal-desc">Project extended architectural specification narrative.</p>
+          
+          <div class="modal-spec-grid">
+            <div class="spec-item">
+              <span class="spec-label">Location</span>
+              <span class="spec-value" id="js-modal-loc">Kyoto, Japan</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Area</span>
+              <span class="spec-value" id="js-modal-area">450 m²</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Architect</span>
+              <span class="spec-value">Silver Teak Studio</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lottie-Web CDN Player Plugin (Loaded before smooth animations begin) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
+  <!-- GSAP Core & Plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+  <!-- Lenis Smooth Scroll Engine (Inertial Motion Execution) -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+  <!-- Smooth Scrolling and Orchestration Engine scripts -->
+  <script src="script.js" defer></script>
+</body>
+</html>
