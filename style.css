@@ -115,8 +115,8 @@ body {
 }
 
 .lottie-container {
-  width: 100%;
-  height: 100%;
+  width: clamp(200px, 15vw, 350px);
+  height: clamp(200px, 15vw, 350px);
   will-change: transform, opacity;
 }
 
@@ -129,7 +129,7 @@ body {
 }
 
 /* ==========================================================================
-   GLOBAL HEADER NAV
+   GLOBAL HEADER NAV & SMART HEADER
    ========================================================================== */
 .header {
   position: fixed;
@@ -140,9 +140,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 2.5rem 4vw;
-  z-index: 100;
+  z-index: 800; /* Under mobile overlay but above standard elements */
   pointer-events: none;
   opacity: 0; /* Animated dynamically during transition callback */
+  will-change: transform;
 }
 
 .logo {
@@ -158,12 +159,13 @@ body {
 }
 
 .header-logo {
-  height: 3rem;
+  height: 2rem;
   width: auto;
   object-fit: contain;
+  display: block;
 }
 
-.header nav {
+.desktop-nav {
   display: flex;
   gap: 3rem;
   pointer-events: auto;
@@ -197,6 +199,127 @@ body {
 .nav-link:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* HAMBURGER TOGGLE COMPONENT */
+.hamburger-btn {
+  display: none; /* Desktop hidden, unlocked via media queries */
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  pointer-events: auto;
+  width: 32px;
+  height: 32px;
+  z-index: 950; /* Sits directly over overlays */
+}
+
+.hamburger-line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-text-primary);
+  will-change: transform, background-color;
+}
+
+/* ==========================================================================
+   MOBILE MENU DRAWER OVERLAY
+   ========================================================================== */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 900;
+  display: none; /* Triggered dynamically as flex */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mobile-menu-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(6, 6, 6, 0.98);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  z-index: 1;
+}
+
+.mobile-menu-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 4vw;
+  z-index: 10;
+}
+
+.mobile-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.mobile-close-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  pointer-events: auto;
+  transition: color 0.4s var(--transition-smooth);
+}
+
+.mobile-close-btn:hover {
+  color: var(--color-accent);
+}
+
+.mobile-nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.mobile-nav-link {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  opacity: 0;
+  display: inline-block;
+  will-change: transform, opacity;
+  transition: color 0.4s var(--transition-smooth);
+}
+
+.mobile-nav-link:hover {
+  color: var(--color-accent);
 }
 
 /* ==========================================================================
@@ -413,11 +536,11 @@ body {
 
 .project-backdrop-img {
   width: 100%;
-  height: 120%; /* Offset height to prevent edge leaks on vertical parallax */
+  height: 100%;
   object-fit: cover;
   filter: brightness(0.35) grayscale(0.2) contrast(1.1);
-  transform: scale(1.05);
-  will-change: transform;
+  transform: none;
+  will-change: auto;
 }
 
 /* Central Slideshow Container */
@@ -632,20 +755,22 @@ body {
   border-radius: 1px;
   background-color: var(--color-bg-secondary);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  clip-path: inset(0 0 100% 0); /* Initial layout state for top-to-bottom wipe */
+  will-change: clip-path;
 }
 
 .service-img {
   width: 100%;
-  height: 120%; /* Space for parallax push */
+  height: 100%; /* No parallax shift height */
   object-fit: cover;
-  filter: brightness(0.4) grayscale(0.2) contrast(1.05);
-  transform: scale(1.15);
-  will-change: transform;
+  filter: none; /* 100% clear - removed overlays and filters */
+  transform: none;
+  will-change: auto;
   transition: transform 1.6s var(--transition-slow);
 }
 
 .service-item:hover .service-img {
-  transform: scale(1.05) translateY(-5px);
+  transform: scale(1.05);
 }
 
 .service-content {
@@ -706,17 +831,17 @@ body {
   position: relative;
   background-color: var(--color-bg-secondary);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  clip-path: inset(0% 100% 0 0); /* Entrance reveal animation */
+  clip-path: inset(0 0 100% 0); /* Initial layout state for top-to-bottom wipe */
   will-change: clip-path;
 }
 
 .js-reveal-image {
   width: 100%;
-  height: 120%; /* Overflow allows for vertical movement */
+  height: 100%; /* No parallax vertical stretch */
   object-fit: cover;
-  filter: brightness(0.5);
-  transform: scale(1.2);
-  will-change: transform;
+  filter: none; /* 100% clear - removed overlays and filters */
+  transform: none;
+  will-change: auto;
 }
 
 .editorial-caption {
@@ -782,6 +907,7 @@ body {
 .instagram-track {
   display: flex;
   width: max-content;
+  flex-wrap: nowrap; /* Forces layout to continuous inline block context */
   will-change: transform;
 }
 
@@ -794,6 +920,7 @@ body {
   border-radius: 1px;
   background-color: var(--color-bg-secondary);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0; /* Prevents flex items from compressing on mobile sizes */
 }
 
 .instagram-slide img {
@@ -1285,14 +1412,27 @@ body {
   .header {
     padding: 2rem 5vw;
   }
-  .header nav {
-    gap: 2rem;
-  }
 
   .hba-project {
     height: auto;
     min-height: 100vh;
     padding: 140px 0;
+  }
+
+  .project-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .project-backdrop-img {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
   }
 
   .project-media-wrapper {
@@ -1345,8 +1485,12 @@ body {
 }
 
 @media (max-width: 768px) {
-  .header nav {
-    display: none; /* Keep layout perfectly minimalist on small displays */
+  .desktop-nav {
+    display: none; /* Hide primary desktop layout entirely */
+  }
+
+  .hamburger-btn {
+    display: flex; /* Reveal mobile navigation toggle trigger */
   }
   
   .service-item {
@@ -1374,6 +1518,7 @@ body {
     height: 60vh;
   }
 
+  /* Secure Mobile Curation Slider sizing layout structure */
   .instagram-slide {
     width: clamp(230px, 45vw, 300px);
     margin-right: 1.5rem;

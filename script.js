@@ -72,7 +72,6 @@ class PreloaderManager {
     });
 
     try {
-      // Correct Lottie-Web instance registration
       this.anim = lottie.loadAnimation({
         container: this.container,
         renderer: 'svg',
@@ -85,7 +84,6 @@ class PreloaderManager {
         ScrollTrigger.refresh();
       });
 
-      // Explicitly capture complete state to trigger fade-out timeline
       this.anim.addEventListener('complete', () => {
         this.exitSequence();
       });
@@ -94,7 +92,6 @@ class PreloaderManager {
       this.exitSequence();
     }
 
-    // Safety fallback: Prevent black screen hang if asset fails to resolve
     this.fallbackTimeout = setTimeout(() => {
       this.exitSequence();
     }, 4000);
@@ -107,18 +104,15 @@ class PreloaderManager {
 
     const tl = gsap.timeline({
       onComplete: () => {
-        // Enforce complete click/visual removal of Preloader
         this.preloader.style.display = 'none';
         this.preloader.style.pointerEvents = 'none';
         
-        // Propagate animation timeline chain
         if (this.onCompleteCallback) {
           this.onCompleteCallback();
         }
       }
     });
 
-    // Fade preloader out seamlessly
     tl.to(this.preloader, {
       opacity: 0,
       yPercent: -4,
@@ -198,6 +192,179 @@ class LuxuryCursor {
   }
 }
 
+class SmartHeader {
+  constructor() {
+    this.header = document.querySelector('.header');
+    this.isHidden = false;
+    
+    if (!this.header) return;
+    this.init();
+  }
+
+  init() {
+    ScrollTrigger.create({
+      start: "top top",
+      onUpdate: (self) => {
+        if (self.scroll() > 120) {
+          if (self.direction === 1 && !this.isHidden) {
+            this.hideHeader();
+          } else if (self.direction === -1 && this.isHidden) {
+            this.showHeader();
+          }
+        } else {
+          this.showHeader();
+        }
+      }
+    });
+  }
+
+  hideHeader() {
+    this.isHidden = true;
+    gsap.to(this.header, {
+      yPercent: -100,
+      duration: 0.4,
+      ease: "power3.inOut"
+    });
+  }
+
+  showHeader() {
+    this.isHidden = false;
+    gsap.to(this.header, {
+      yPercent: 0,
+      duration: 0.4,
+      ease: "power3.out"
+    });
+  }
+}
+
+class MobileMenuManager {
+  constructor(lenis) {
+    this.lenis = lenis;
+    this.hamburger = document.getElementById('js-hamburger');
+    this.menuOverlay = document.getElementById('js-mobile-menu');
+    this.closeBtn = document.getElementById('js-mobile-close');
+    this.mobileLogo = document.querySelector('.mobile-logo');
+    this.bg = this.menuOverlay ? this.menuOverlay.querySelector('.mobile-menu-bg') : null;
+    this.links = document.querySelectorAll('.mobile-nav-link');
+    this.isOpen = false;
+
+    if (!this.hamburger || !this.menuOverlay) return;
+    this.initTimeline();
+    this.bindEvents();
+  }
+
+  initTimeline() {
+    this.timeline = gsap.timeline({ paused: true });
+
+    this.timeline
+      .set(this.menuOverlay, { display: 'flex' })
+      .fromTo(this.bg, {
+        xPercent: 100
+      }, {
+        xPercent: 0,
+        duration: 0.8,
+        ease: "power4.inOut"
+      })
+      .fromTo([this.mobileLogo, this.closeBtn], {
+        opacity: 0,
+        y: -20
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power3.out"
+      }, "-=0.2")
+      .fromTo(this.links, {
+        opacity: 0,
+        y: 40
+      }, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.08,
+        duration: 0.6,
+        ease: "power3.out"
+      }, "-=0.4")
+      .to('.hamburger-line.line-1', {
+        y: 4,
+        rotation: 45,
+        duration: 0.4,
+        ease: "power2.inOut"
+      }, 0)
+      .to('.hamburger-line.line-2', {
+        y: -4,
+        rotation: -45,
+        duration: 0.4,
+        ease: "power2.inOut"
+      }, 0);
+  }
+
+  bindEvents() {
+    this.hamburger.addEventListener('click', () => this.toggle());
+    
+    if (this.closeBtn) {
+      this.closeBtn.addEventListener('click', () => this.close());
+    }
+
+    if (this.mobileLogo) {
+      this.mobileLogo.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.close(() => {
+          if (this.lenis) {
+            this.lenis.scrollTo(0, { duration: 1.5 });
+          }
+        });
+      });
+    }
+
+    this.links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        this.close(() => {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement && this.lenis) {
+            this.lenis.scrollTo(targetElement, {
+              duration: 1.8,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            });
+          }
+        });
+      });
+    });
+  }
+
+  toggle() {
+    if (this.isOpen) {
+      this.close();
+    } else {
+      this.open();
+    }
+  }
+
+  open() {
+    this.isOpen = true;
+    this.hamburger.setAttribute('aria-expanded', 'true');
+    this.menuOverlay.setAttribute('aria-hidden', 'false');
+    this.menuOverlay.style.pointerEvents = 'auto';
+    
+    if (this.lenis) this.lenis.stop();
+    this.timeline.play();
+  }
+
+  close(callback) {
+    this.isOpen = false;
+    this.hamburger.setAttribute('aria-expanded', 'false');
+    this.menuOverlay.setAttribute('aria-hidden', 'true');
+    this.menuOverlay.style.pointerEvents = 'none';
+
+    if (this.lenis) this.lenis.start();
+    this.timeline.reverse().then(() => {
+      gsap.set(this.menuOverlay, { display: 'none' });
+      if (callback) callback();
+    });
+  }
+}
+
 class HeroAnimation {
   constructor() {
     this.titleElement = document.getElementById('js-hero-title');
@@ -231,8 +398,6 @@ class HeroAnimation {
   initEntrySequence() {
     const timeline = gsap.timeline();
 
-    // EXPLICIT VISIBILITY RESET FOR TESTER REQUIREMENT
-    // Safely overrides the initial CSS opacity block only when preloader exits
     timeline.to(this.titleElement, {
       opacity: 1,
       duration: 0.1,
@@ -308,7 +473,6 @@ class HBAPinnedSlider {
     this.projects.forEach((project) => {
       const slides = project.querySelectorAll('.project-slide.next-slide');
       const progressBarFill = project.querySelector('.progress-bar-fill');
-      const backdropImg = project.querySelector('.project-backdrop-img');
       
       const totalSlides = slides.length;
       const scrollDuration = totalSlides * 100; 
@@ -324,21 +488,6 @@ class HBAPinnedSlider {
           invalidateOnRefresh: true
         }
       });
-
-      if (backdropImg) {
-        gsap.fromTo(backdropImg, {
-          yPercent: -8
-        }, {
-          yPercent: 8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: project,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
-          }
-        });
-      }
 
       slides.forEach((slide, idx) => {
         const image = slide.querySelector('img');
@@ -614,8 +763,7 @@ class ServicesReveals {
     });
 
     this.items.forEach((item) => {
-      const img = item.querySelector('.service-img');
-      const content = item.querySelector('.service-content');
+      const mediaFrame = item.querySelector('.service-media-frame');
       
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -625,32 +773,22 @@ class ServicesReveals {
         }
       });
 
+      if (mediaFrame) {
+        tl.fromTo(mediaFrame, {
+          clipPath: "inset(0 0 100% 0)"
+        }, {
+          clipPath: "inset(0 0 0% 0)",
+          duration: 1.5,
+          ease: "power4.inOut"
+        });
+      }
+
       tl.to(item, {
         opacity: 1,
         y: 0,
         duration: 1.2,
         ease: "power3.out"
-      });
-
-      if (img) {
-        tl.to(img, {
-          scale: 1.0,
-          duration: 1.8,
-          ease: "power4.out"
-        }, "-=1.2");
-
-        gsap.to(img, {
-          yPercent: 8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: item,
-            start: "top bottom",
-            end: "bottom top",
-            scrollTrigger: true,
-            scrub: true
-          }
-        });
-      }
+      }, "-=1.5");
     });
   }
 }
@@ -676,27 +814,12 @@ class SmoothScrollReveals {
         }
       });
 
-      tl.to(container, {
-        clipPath: "inset(0% 0 0 0)",
-        duration: 1.6,
-        ease: "power4.out"
-      });
-
-      tl.to(img, {
-        scale: 1.0,
-        duration: 2.0,
-        ease: "power4.out"
-      }, "-=1.6");
-
-      gsap.to(img, {
-        yPercent: 12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true
-        }
+      tl.fromTo(container, {
+        clipPath: "inset(0 0 100% 0)"
+      }, {
+        clipPath: "inset(0 0 0% 0)",
+        duration: 1.5,
+        ease: "power4.inOut"
       });
     });
   }
@@ -738,7 +861,7 @@ class InstagramSlider {
         if (slides[i]) {
           const style = window.getComputedStyle(slides[i]);
           const marginRight = parseFloat(style.marginRight) || 0;
-          widthAccumulator += slides[i].offsetWidth + marginRight;
+          widthAccumulator += slides[i].getBoundingClientRect().width + marginRight;
         }
       }
       return widthAccumulator;
@@ -948,7 +1071,7 @@ document.addEventListener("DOMContentLoaded", () => {
   lenisInstance.stop();
 
   const initSmoothNavLinks = (lenis) => {
-    const navLinks = document.querySelectorAll('.header nav a, .logo');
+    const navLinks = document.querySelectorAll('.desktop-nav a, .logo');
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -975,7 +1098,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const cursor = new LuxuryCursor();
   const heroAnim = new HeroAnimation();
 
-  // PreloaderManager orchestrates the sequential fade-out to prevent flashes
   new PreloaderManager(() => {
     const wrapper = document.getElementById('smooth-wrapper');
     if (wrapper) {
@@ -997,6 +1119,8 @@ document.addEventListener("DOMContentLoaded", () => {
           new ThreeSpatialCanvas();
           new LuxuryDetailsModal(lenisInstance);
           new InstagramSlider();
+          new SmartHeader();
+          new MobileMenuManager(lenisInstance);
           
           ScrollTrigger.refresh();
           cursor.refreshHoverTargets();
@@ -1004,7 +1128,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Explicitly run entry timeline ONLY AFTER the preloader has completely faded out
     heroAnim.initEntrySequence();
   });
 

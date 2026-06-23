@@ -28,20 +28,47 @@
   <!-- Global Header Navigation -->
   <header class="header">
     <a href="#" class="logo hover-target" aria-label="Silver Teak Design Studio Home">
-      <svg class="header-logo" viewBox="0 0 100 40" width="120" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="0" y="28" font-family="'Playfair Display', serif" font-size="24" fill="#f5f5f5" letter-spacing="2">S</text>
-        <text x="22" y="28" font-family="'Inter', sans-serif" font-size="10" fill="#c5a880" letter-spacing="4">T</text>
-        <line x1="16" y1="10" x2="16" y2="30" stroke="#c5a880" stroke-width="1"/>
-      </svg>
+      <img src="./White-logo.png" alt="Logo" class="header-logo">
     </a>
-    <nav aria-label="Primary Navigation">
+    
+    <!-- Primary Desktop Navigation -->
+    <nav class="desktop-nav" aria-label="Primary Navigation">
       <a href="#projects" class="nav-link hover-target">Projects</a>
       <a href="#services" class="nav-link hover-target">Services</a>
       <a href="#about" class="nav-link hover-target">Studio</a>
       <a href="#instagram" class="nav-link hover-target">Journal</a>
       <a href="#contact" class="nav-link hover-target">Contact</a>
     </nav>
+
+    <!-- Mobile Navigation Toggle -->
+    <button class="hamburger-btn hover-target" id="js-hamburger" aria-label="Toggle Navigation Menu" aria-expanded="false">
+      <span class="hamburger-line line-1"></span>
+      <span class="hamburger-line line-2"></span>
+    </button>
   </header>
+
+  <!-- Full-Screen Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="js-mobile-menu" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="mobile-menu-bg"></div>
+    
+    <!-- Mobile Menu Luxury Header -->
+    <div class="mobile-menu-header">
+      <a href="#" class="mobile-logo hover-target" aria-label="Silver Teak Design Studio Home">
+        <img src="./White-logo.png" alt="Logo" class="header-logo">
+      </a>
+      <button class="mobile-close-btn hover-target" id="js-mobile-close" aria-label="Close Navigation Menu">
+        <span class="close-icon">&times;</span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile Navigation Drawer">
+      <a href="#projects" class="mobile-nav-link hover-target">Projects</a>
+      <a href="#services" class="mobile-nav-link hover-target">Services</a>
+      <a href="#about" class="mobile-nav-link hover-target">Studio</a>
+      <a href="#instagram" class="mobile-nav-link hover-target">Journal</a>
+      <a href="#contact" class="mobile-nav-link hover-target">Contact</a>
+    </nav>
+  </div>
 
   <!-- Skip Projects Fixed Control Element -->
   <button id="js-skip-projects" class="skip-projects-btn hover-target" aria-label="Skip featured projects section">
@@ -56,7 +83,7 @@
       <section class="hero" aria-label="Hero Section">
         <div class="hero-bg-container">
           <img 
-            src="https://picsum.photos/1920/1080" 
+            src="https://picsum.photos/seed/hero/1920/1080" 
             class="hero-bg-img" 
             alt="Minimalist concrete villa facade in forest atmosphere"
           >
@@ -77,18 +104,18 @@
         <!-- PROJECT 1 -->
         <div class="hba-project" id="project-01">
           <div class="project-backdrop">
-            <img src="https://picsum.photos/1920/1080" alt="House of Light Backdrop" class="project-backdrop-img">
+            <img src="https://picsum.photos/seed/proj1-bg/1920/1080" alt="House of Light Backdrop" class="project-backdrop-img">
           </div>
 
           <div class="project-media-wrapper">
             <div class="project-slide active" style="z-index: 1;">
-              <img src="https://picsum.photos/1920/1080" alt="House of Light Exterior">
+              <img src="https://picsum.photos/seed/proj1-s1/1920/1080" alt="House of Light Exterior">
             </div>
             <div class="project-slide next-slide" style="z-index: 2;">
-              <img src="https://picsum.photos/1920/1080" alt="House of Light Living space">
+              <img src="https://picsum.photos/seed/proj1-s2/1920/1080" alt="House of Light Living space">
             </div>
             <div class="project-slide next-slide" style="z-index: 3;">
-              <img src="https://picsum.photos/1920/1080" alt="House of Light Detail close up">
+              <img src="https://picsum.photos/seed/proj1-s3/1920/1080" alt="House of Light Detail close up">
             </div>
           </div>
           
@@ -117,18 +144,18 @@
         <!-- PROJECT 2 -->
         <div class="hba-project" id="project-02">
           <div class="project-backdrop">
-            <img src="https://picsum.photos/1920/1080" alt="Ocean Pavilion Backdrop" class="project-backdrop-img">
+            <img src="https://picsum.photos/seed/proj2-bg/1920/1080" alt="Ocean Pavilion Backdrop" class="project-backdrop-img">
           </div>
 
           <div class="project-media-wrapper">
             <div class="project-slide active" style="z-index: 1;">
-              <img src="https://picsum.photos/1920/1080" alt="Ocean Pavilion Cliffs view">
+              <img src="https://picsum.photos/seed/proj2-s1/1920/1080" alt="Ocean Pavilion Cliffs view">
             </div>
             <div class="project-slide next-slide" style="z-index: 2;">
-              <img src="https://picsum.photos/1920/1080" alt="Ocean Pavilion Balcony infinity pool">
+              <img src="https://picsum.photos/seed/proj2-s2/1920/1080" alt="Ocean Pavilion Balcony infinity pool">
             </div>
             <div class="project-slide next-slide" style="z-index: 3;">
-              <img src="https://picsum.photos/1920/1080" alt="Ocean Pavilion Minimalist Lounge">
+              <img src="https://picsum.photos/seed/proj2-s3/1920/1080" alt="Ocean Pavilion Minimalist Lounge">
             </div>
           </div>
           
@@ -157,18 +184,18 @@
         <!-- PROJECT 3 -->
         <div class="hba-project" id="project-03">
           <div class="project-backdrop">
-            <img src="https://picsum.photos/1920/1080" alt="Monolith Sanctuary Backdrop" class="project-backdrop-img">
+            <img src="https://picsum.photos/seed/proj3-bg/1920/1080" alt="Monolith Sanctuary Backdrop" class="project-backdrop-img">
           </div>
 
           <div class="project-media-wrapper">
             <div class="project-slide active" style="z-index: 1;">
-              <img src="https://picsum.photos/1920/1080" alt="The Monolith Sanctuary facade">
+              <img src="https://picsum.photos/seed/proj3-s1/1920/1080" alt="The Monolith Sanctuary facade">
             </div>
             <div class="project-slide next-slide" style="z-index: 2;">
-              <img src="https://picsum.photos/1920/1080" alt="The Monolith Sanctuary Spa Area">
+              <img src="https://picsum.photos/seed/proj3-s2/1920/1080" alt="The Monolith Sanctuary Spa Area">
             </div>
             <div class="project-slide next-slide" style="z-index: 3;">
-              <img src="https://picsum.photos/1920/1080" alt="The Monolith Sanctuary Bedroom view">
+              <img src="https://picsum.photos/seed/proj3-s3/1920/1080" alt="The Monolith Sanctuary Bedroom view">
             </div>
           </div>
           
@@ -209,7 +236,7 @@
             <!-- Service Item 1 -->
             <div class="service-item reveal-item">
               <div class="service-media-frame">
-                <img src="https://picsum.photos/1920/1080" alt="Architectural Masterplanning Visual representation" class="service-img">
+                <img src="https://picsum.photos/seed/service1/1920/1080" alt="Architectural Masterplanning Visual representation" class="service-img">
               </div>
               <div class="service-content">
                 <span class="service-num">01</span>
@@ -221,7 +248,7 @@
             <!-- Service Item 2 -->
             <div class="service-item reveal-item">
               <div class="service-media-frame">
-                <img src="https://picsum.photos/1920/1080" alt="Interior Architecture Visual representation" class="service-img">
+                <img src="https://picsum.photos/seed/service2/1920/1080" alt="Interior Architecture Visual representation" class="service-img">
               </div>
               <div class="service-content">
                 <span class="service-num">02</span>
@@ -233,7 +260,7 @@
             <!-- Service Item 3 -->
             <div class="service-item reveal-item">
               <div class="service-media-frame">
-                <img src="https://picsum.photos/1920/1080" alt="Elemental Curations Visual representation" class="service-img">
+                <img src="https://picsum.photos/seed/service3/1920/1080" alt="Elemental Curations Visual representation" class="service-img">
               </div>
               <div class="service-content">
                 <span class="service-num">03</span>
@@ -253,7 +280,7 @@
         <div class="reveal-card">
           <div class="reveal-image-wrap js-reveal-container">
             <img 
-              src="https://picsum.photos/1920/1080" 
+              src="https://picsum.photos/seed/about1/1920/1080" 
               class="js-reveal-image" 
               alt="Raw elemental materials stone and wood design detail"
             >
@@ -270,7 +297,7 @@
         <div class="reveal-card offset">
           <div class="reveal-image-wrap js-reveal-container">
             <img 
-              src="https://picsum.photos/1920/1080" 
+              src="https://picsum.photos/seed/about2/1920/1080" 
               class="js-reveal-image" 
               alt="Close-up architectural curve structural details"
             >
@@ -296,25 +323,25 @@
             
             <!-- Original Set of 4 Slides -->
             <div class="instagram-slide">
-              <img src="https://picsum.photos/1920/1080" alt="Minimalist geometric facade detailing">
+              <img src="https://picsum.photos/seed/insta1/1920/1080" alt="Minimalist geometric facade detailing">
               <div class="instagram-overlay">
                 <span class="instagram-handle">@silverteak.design</span>
               </div>
             </div>
             <div class="instagram-slide">
-              <img src="https://picsum.photos/1920/1080" alt="Organic timber joinery alignment">
+              <img src="https://picsum.photos/seed/insta2/1920/1080" alt="Organic timber joinery alignment">
               <div class="instagram-overlay">
                 <span class="instagram-handle">@silverteak.design</span>
               </div>
             </div>
             <div class="instagram-slide">
-              <img src="https://picsum.photos/1920/1080" alt="Interplay of direct sunlight and raw stone">
+              <img src="https://picsum.photos/seed/insta3/1920/1080" alt="Interplay of direct sunlight and raw stone">
               <div class="instagram-overlay">
                 <span class="instagram-handle">@silverteak.design</span>
               </div>
             </div>
             <div class="instagram-slide">
-              <img src="https://picsum.photos/1920/1080" alt="Architectural scale model mockup detail">
+              <img src="https://picsum.photos/seed/insta4/1920/1080" alt="Architectural scale model mockup detail">
               <div class="instagram-overlay">
                 <span class="instagram-handle">@silverteak.design</span>
               </div>
@@ -322,25 +349,25 @@
 
             <!-- Duplicate Set for Seamless Infinite Scrolling Bounds -->
             <div class="instagram-slide" aria-hidden="true">
-              <img src="https://picsum.photos/1920/1080" alt="Minimalist geometric facade detailing copy">
+              <img src="https://picsum.photos/seed/insta1/1920/1080" alt="Minimalist geometric facade detailing copy">
               <div class="instagram-overlay">
                 <span class="instagram-handle">@silverteak.design</span>
               </div>
             </div>
             <div class="instagram-slide" aria-hidden="true">
-              <img src="https://picsum.photos/1920/1080" alt="Organic timber joinery alignment copy">
+              <img src="https://picsum.photos/seed/insta2/1920/1080" alt="Organic timber joinery alignment copy">
               <div class="instagram-overlay">
                 <span class="instagram-handle">@silverteak.design</span>
               </div>
             </div>
             <div class="instagram-slide" aria-hidden="true">
-              <img src="https://picsum.photos/1920/1080" alt="Interplay of direct sunlight and raw stone copy">
+              <img src="https://picsum.photos/seed/insta3/1920/1080" alt="Interplay of direct sunlight and raw stone copy">
               <div class="instagram-overlay">
                 <span class="instagram-handle">@silverteak.design</span>
               </div>
             </div>
             <div class="instagram-slide" aria-hidden="true">
-              <img src="https://picsum.photos/1920/1080" alt="Architectural scale model mockup detail copy">
+              <img src="https://picsum.photos/seed/insta4/1920/1080" alt="Architectural scale model mockup detail copy">
               <div class="instagram-overlay">
                 <span class="instagram-handle">@silverteak.design</span>
               </div>
