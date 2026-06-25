@@ -77,7 +77,7 @@ class PreloaderManager {
         renderer: 'svg',
         loop: false,
         autoplay: true,
-        path: './intro.json'
+        path: './short.json'
       });
 
       this.anim.addEventListener('DOMLoaded', () => {
