@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Silver Teak Design Studio | Luxury Spatial Architecture</title>
-  <meta name="description" content="Award-winning quiet luxury architectural portfolio showcasing clean geometries, raw elemental design, and bespoke structural narratives.">
+  <title>Silver Teak Design Studio | Premium Spatial Design Firm</title>
+  
+  <!-- SEO & AI Discoverability Metadata -->
+  <meta name="description" content="Silver Teak Design Studio is a premium spatial design firm and luxury residential architect. Specializing in modern concrete architecture, architecture contractor solutions, and premium modular kitchen design. Explore modular designs, bespoke bedroom designs, and expert guides on how to design a quiet luxury living room.">
+  <meta name="keywords" content="architecture contractor, How to design a quiet luxury living room, Premium modular kitchen design, Modern concrete architecture, Luxury residential architect, Premium spatial design firm, Interior designer, Architecture, Modular designs, Bedroom designs, modular kitchen">
+  <meta name="author" content="Silver Teak Design Studio">
+  
+  <!-- Open Graph Protocol for Search Engine Optimization -->
+  <meta property="og:title" content="Silver Teak Design Studio | Premium Spatial Design Firm">
+  <meta property="og:description" content="Bespoke architectural artifacts, luxury residential architect solutions, and curated modern concrete architecture.">
+  <meta property="og:type" content="website">
   
   <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans-Serif) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +37,7 @@
   <!-- Global Header Navigation -->
   <header class="header">
     <a href="#" class="logo hover-target" aria-label="Silver Teak Design Studio Home">
-      <img src="./White-logo.png" alt="Logo" class="header-logo">
+      <img src="./White-logo.png" alt="Silver Teak Design Studio Logo" class="header-logo">
     </a>
     
     <!-- Primary Desktop Navigation -->
@@ -54,7 +63,7 @@
     <!-- Mobile Menu Luxury Header -->
     <div class="mobile-menu-header">
       <a href="#" class="mobile-logo hover-target" aria-label="Silver Teak Design Studio Home">
-        <img src="./White-logo.png" alt="Logo" class="header-logo">
+        <img src="./White-logo.png" alt="Silver Teak Design Studio Logo" class="header-logo">
       </a>
       <button class="mobile-close-btn hover-target" id="js-mobile-close" aria-label="Close Navigation Menu">
         <span class="close-icon">&times;</span>
@@ -98,13 +107,19 @@
         </div>
       </section>
 
-      <!-- SECTION 2: HBA-Style Pinned Projects Section -->
-      <section id="projects" class="hba-projects-container" aria-label="Featured Works">
+      <!-- SECTION 2: Pinned Projects Section -->
+      <section id="projects" class="featured-projects-wrap" aria-label="Featured Works">
         
         <!-- PROJECT 1 -->
-        <div class="hba-project" id="project-01">
+        <div class="project-card" id="project-01">
           <div class="project-backdrop">
             <img src="https://picsum.photos/seed/proj1-bg/1920/1080" alt="House of Light Backdrop" class="project-backdrop-img">
+          </div>
+
+          <!-- Mobile Top Meta (Only rendered on mobile) -->
+          <div class="mobile-project-meta-top">
+            <h2 class="project-title font-serif">House of Light</h2>
+            <span class="project-num">01 / 03</span>
           </div>
 
           <div class="project-media-wrapper">
@@ -119,7 +134,8 @@
             </div>
           </div>
           
-          <div class="project-meta-bottom">
+          <!-- Desktop Bottom Meta (Hidden on mobile) -->
+          <div class="project-meta-bottom desktop-only-meta">
             <div class="meta-content-wrap">
               <div class="meta-left">
                 <span class="project-num">01 / 03</span>
@@ -139,12 +155,32 @@
               </div>
             </div>
           </div>
+
+          <!-- Mobile Bottom Meta (Only rendered on mobile with bottom-right alignment) -->
+          <div class="mobile-project-meta-bottom">
+            <div class="mobile-project-keywords font-sans">Minimalist | Interior | 2026</div>
+            <div class="mobile-action-progress-wrap">
+              <button class="view-project-btn hover-target" data-project-idx="0" aria-label="View House of Light Details">
+                <span class="view-project-text">View Project</span>
+                <span class="view-project-arrow">&rarr;</span>
+              </button>
+              <div class="project-slide-progress">
+                <div class="progress-bar-fill"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- PROJECT 2 -->
-        <div class="hba-project" id="project-02">
+        <div class="project-card" id="project-02">
           <div class="project-backdrop">
             <img src="https://picsum.photos/seed/proj2-bg/1920/1080" alt="Ocean Pavilion Backdrop" class="project-backdrop-img">
+          </div>
+
+          <!-- Mobile Top Meta (Only rendered on mobile) -->
+          <div class="mobile-project-meta-top">
+            <h2 class="project-title font-serif">Ocean Pavilion</h2>
+            <span class="project-num">02 / 03</span>
           </div>
 
           <div class="project-media-wrapper">
@@ -159,7 +195,8 @@
             </div>
           </div>
           
-          <div class="project-meta-bottom">
+          <!-- Desktop Bottom Meta (Hidden on mobile) -->
+          <div class="project-meta-bottom desktop-only-meta">
             <div class="meta-content-wrap">
               <div class="meta-left">
                 <span class="project-num">02 / 03</span>
@@ -179,12 +216,32 @@
               </div>
             </div>
           </div>
+
+          <!-- Mobile Bottom Meta (Only rendered on mobile with bottom-right alignment) -->
+          <div class="mobile-project-meta-bottom">
+            <div class="mobile-project-keywords font-sans">Coastal | Structural | 2024</div>
+            <div class="mobile-action-progress-wrap">
+              <button class="view-project-btn hover-target" data-project-idx="1" aria-label="View Ocean Pavilion Details">
+                <span class="view-project-text">View Project</span>
+                <span class="view-project-arrow">&rarr;</span>
+              </button>
+              <div class="project-slide-progress">
+                <div class="progress-bar-fill"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- PROJECT 3 -->
-        <div class="hba-project" id="project-03">
+        <div class="project-card" id="project-03">
           <div class="project-backdrop">
             <img src="https://picsum.photos/seed/proj3-bg/1920/1080" alt="Monolith Sanctuary Backdrop" class="project-backdrop-img">
+          </div>
+
+          <!-- Mobile Top Meta (Only rendered on mobile) -->
+          <div class="mobile-project-meta-top">
+            <h2 class="project-title font-serif">Monolith Sanctuary</h2>
+            <span class="project-num">03 / 03</span>
           </div>
 
           <div class="project-media-wrapper">
@@ -199,7 +256,8 @@
             </div>
           </div>
           
-          <div class="project-meta-bottom">
+          <!-- Desktop Bottom Meta (Hidden on mobile) -->
+          <div class="project-meta-bottom desktop-only-meta">
             <div class="meta-content-wrap">
               <div class="meta-left">
                 <span class="project-num">03 / 03</span>
@@ -220,12 +278,36 @@
               </div>
             </div>
           </div>
+
+          <!-- Mobile Bottom Meta (Only rendered on mobile with bottom-right alignment) -->
+          <div class="mobile-project-meta-bottom">
+            <div class="mobile-project-keywords font-sans">Mountain | Geothermal | 2025</div>
+            <div class="mobile-action-progress-wrap">
+              <button class="view-project-btn hover-target" data-project-idx="2" aria-label="View Monolith Sanctuary Details">
+                <span class="view-project-text">View Project</span>
+                <span class="view-project-arrow">&rarr;</span>
+              </button>
+              <div class="project-slide-progress">
+                <div class="progress-bar-fill"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </section>
 
-      <!-- SECTION 3: Minimalist Services Section with Enhanced Luxury Media Columns -->
+      <!-- SECTION 3: Minimalist Services Section with Dynamic Organic SEO Keywords -->
       <section id="services" class="services-section" aria-label="Services Section">
+        <!-- Hidden Semantic Container for Advanced Crawlers/AI Agents -->
+        <div class="seo-semantic-block sr-only">
+          <h2>Premium Spatial Design Firm &amp; Elite Architecture Contractor</h2>
+          <p>
+            As a leading luxury residential architect and expert architecture contractor, Silver Teak Design Studio specializes in modern concrete architecture. 
+            Discover professional guides on how to design a quiet luxury living room utilizing bespoke furniture layouts, spatial depth, and architectural concrete forms. 
+            We provide custom premium modular kitchen design solutions, luxury bedroom designs, and state-of-the-art modular kitchen structural frameworks as a dedicated master builder and interior designer.
+          </p>
+        </div>
+
         <div class="services-container">
           <div class="services-header">
             <span class="services-tag reveal-text">Our Philosophy</span>
@@ -241,7 +323,7 @@
               <div class="service-content">
                 <span class="service-num">01</span>
                 <h3 class="font-serif">Architectural Masterplanning</h3>
-                <p>Defining architectural narratives that resonate with local topography and solar configurations, engineering custom facades that respect regional elements.</p>
+                <p>Establishing narratives as a premier luxury residential architect. We balance modern concrete architecture with local topography, ensuring our projects stand as icons of architectural integrity.</p>
               </div>
             </div>
 
@@ -252,8 +334,8 @@
               </div>
               <div class="service-content">
                 <span class="service-num">02</span>
-                <h3 class="font-serif">Interior Architecture</h3>
-                <p>Designing pure interior environments utilizing continuous stone surfaces, bespoke structural joinery, and meticulously hidden physical systems.</p>
+                <h3 class="font-serif">Interior Architecture &amp; Curation</h3>
+                <p>From advising on how to design a quiet luxury living room to executing premium modular kitchen design concepts, we craft custom spatial environments using bespoke stone systems and integrated modular designs.</p>
               </div>
             </div>
 
@@ -264,8 +346,8 @@
               </div>
               <div class="service-content">
                 <span class="service-num">03</span>
-                <h3 class="font-serif">Elemental Curations</h3>
-                <p>Formulating curated materiality schemes with rare raw stones, solid brass accents, sand-blasted timber structures, and curated modern art pieces.</p>
+                <h3 class="font-serif">Elemental Materials Curation</h3>
+                <p>Directing material alignments as a leading interior designer and architecture contractor. We assemble raw timbers, textured concrete, and custom kitchen structures that integrate seamlessly with bedrooms and main living voids.</p>
               </div>
             </div>
 
@@ -288,7 +370,7 @@
           <div class="editorial-caption">
             <h3 class="font-serif">Architectural Authenticity</h3>
             <p class="font-sans">
-              We employ raw natural materials that showcase the gentle patina of time, establishing harmony between nature and geometric construct.
+              As a bespoke premium spatial design firm, we employ physical natural materials that show the passage of time. We balance direct lighting paths with structural concrete frameworks to establish harmony between nature and geometric construct.
             </p>
           </div>
         </div>
@@ -305,7 +387,7 @@
           <div class="editorial-caption">
             <h3 class="font-serif">Subtractive Architectonics</h3>
             <p class="font-sans">
-              Stripping away non-essential components to maximize natural light pathways and preserve the emotional integrity of spatial voids.
+              Stripping away non-essential components to maximize natural light pathways, preserving spatial voids and highlighting the geometric beauty of premium residential architecture.
             </p>
           </div>
         </div>

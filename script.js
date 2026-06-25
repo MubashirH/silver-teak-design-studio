@@ -34,7 +34,7 @@ const PROJECT_REGISTRY = [
   {
     num: "03 / 03",
     title: "Monolith Sanctuary",
-    desc: "A physical mountain architectural sanctuary carved into raw alpine metamorphic rocks. Programmed to withstand the high-alpine temperatures while providing an authentic and quiet emotional interior refuge.",
+    desc: "A physical mountain architectural sanctuary carved into raw alpine metamorphic rocks. Programmed to withstand high-alpine temperatures while providing an authentic and quiet emotional interior refuge.",
     location: "St. Moritz, Swiss Alps",
     area: "340 m²",
     images: [
@@ -378,7 +378,8 @@ class HeroAnimation {
   }
 
   splitTextElements() {
-    const text = this.titleElement.innerText;
+    // TEXTCONTENT fix: Reads raw string correctly even when opacity/visibility is 0
+    const text = this.titleElement.textContent.trim();
     const words = text.split(' ');
     this.titleElement.innerHTML = '';
 
@@ -398,6 +399,7 @@ class HeroAnimation {
   initEntrySequence() {
     const timeline = gsap.timeline();
 
+    // Smoothly animate main title into visible view state
     timeline.to(this.titleElement, {
       opacity: 1,
       duration: 0.1,
@@ -462,9 +464,9 @@ class HeroAnimation {
   }
 }
 
-class HBAPinnedSlider {
+class FeaturedProjectsSlider {
   constructor() {
-    this.projects = gsap.utils.toArray('.hba-project');
+    this.projects = gsap.utils.toArray('.project-card');
     if (this.projects.length === 0) return;
     this.init();
   }
@@ -472,20 +474,20 @@ class HBAPinnedSlider {
   init() {
     this.projects.forEach((project) => {
       const slides = project.querySelectorAll('.project-slide.next-slide');
-      const progressBarFill = project.querySelector('.progress-bar-fill');
-      
+      const progressBarFills = project.querySelectorAll('.progress-bar-fill');
       const totalSlides = slides.length;
-      const scrollDuration = totalSlides * 100; 
 
+      // Pinning calculations updated to prevent mobile regression gaps
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: project,
           start: "top top",
-          end: `+=${scrollDuration}%`,
+          end: () => `+=${window.innerHeight * totalSlides}`,
           pin: true,
           scrub: 1.0,
           anticipatePin: 1,
-          invalidateOnRefresh: true
+          invalidateOnRefresh: true,
+          pinSpacing: true
         }
       });
 
@@ -507,8 +509,8 @@ class HBAPinnedSlider {
           ease: "none"
         }, "<");
 
-        if (progressBarFill) {
-          tl.to(progressBarFill, {
+        if (progressBarFills.length > 0) {
+          tl.to(progressBarFills, {
             width: `${slideProgressTarget}%`,
             duration: 1.5,
             ease: "none"
@@ -869,9 +871,10 @@ class InstagramSlider {
 
     let translationLimit = calculateScrollBounds();
 
+    // Marquee scroll speed increased dynamically (duration cut from 28 to 12)
     this.marqueeTween = gsap.to(this.track, {
       x: -translationLimit,
-      duration: 28, 
+      duration: 12, 
       ease: "none",
       repeat: -1,
       onReverseComplete: () => {
@@ -1112,7 +1115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         onComplete: () => {
           lenisInstance.start();
           
-          new HBAPinnedSlider();
+          new FeaturedProjectsSlider();
           new SkipProjectsControl(lenisInstance);
           new ServicesReveals();
           new SmoothScrollReveals();
